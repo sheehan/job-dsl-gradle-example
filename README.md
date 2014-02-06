@@ -1,6 +1,6 @@
-# Jenkins Job DSL Plugin Gradle Example
+# Jenkins Job DSL Gradle Example
 
-An example Job DSL project that uses Gradle for building and testing.
+An example [Job DSL](https://github.com/jenkinsci/job-dsl-plugin) project that uses Gradle for building and testing.
 
 ## File structure
 
@@ -23,12 +23,7 @@ An example Job DSL project that uses Gradle for building and testing.
 
 ## Seed job configuration settings
 
-* Build
-    * Invoke Gradle script
-        * Use Gradle Wrapper: `true`
-        * Tasks: `clean test workspace`
-    * Process Job DSLs
-        * DSL Scripts: `build/workspace/*.groovy`
-* Post-build
-    * Publish JUnit test result report
-        * Test report XMLs: `build/test-results/**/*.xml`
+* Invoke Gradle script → Use Gradle Wrapper: `true`
+* Invoke Gradle script → Tasks: `clean test workspace`
+* Process Job DSLs → DSL Scripts: `build/workspace/*.groovy`
+* Publish JUnit test result report → Test report XMLs: `build/test-results/**/*.xml`
