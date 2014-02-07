@@ -4,14 +4,10 @@ import javaposse.jobdsl.dsl.Job
 import javaposse.jobdsl.dsl.JobParent
 import spock.lang.Specification
 
+@Mixin(JobSpecMixin)
 class GrailsCiJobBuilderSpec extends Specification {
 
-    JobParent jobParent = new JobParent() {
-        @Override
-        Object run() {
-            return null
-        }
-    }
+    JobParent jobParent = createJobParent()
 
     void 'test XML output'() {
         given:
@@ -23,7 +19,6 @@ class GrailsCiJobBuilderSpec extends Specification {
 
         when:
         Job job = builder.build(jobParent)
-        println job.xml
 
         then:
         job.name == builder.name

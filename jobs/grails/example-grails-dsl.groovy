@@ -12,12 +12,12 @@ job {
 
 new GrailsCiJobBuilder(
     name: 'example-grails-job',
-    description: 'An example using a job builder.',
+    description: 'An example using a job builder for a Grails project.',
     gitUrl: 'git@github.com:example/example.git'
 ).build(this)
 
 new GrailsCiJobBuilder(
     name: 'another-example-grails-job',
-    description: 'Another example using a job builder.',
+    description: 'Another example using a job builder for a Grails project.',
     gitUrl: 'git@github.com:example/example2.git'
 ).build(this)
