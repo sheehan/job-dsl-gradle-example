@@ -3,7 +3,7 @@ package com.dslexample
 import javaposse.jobdsl.dsl.Job
 
 /**
- *
+ *  Example Class for creating a Grails build
  */
 class GrailsCiJobBuilder {
 
