@@ -18,11 +18,11 @@ An example [Job DSL](https://github.com/jenkinsci/job-dsl-plugin) project that u
 ## Commands
 
 * `./gradlew test` runs the specs.
-* `./gradlew workspace` copies src files and DSL scripts to `build/workspace`.
 
 ## Seed job configuration settings
 
 * Invoke Gradle script → Use Gradle Wrapper: `true`
-* Invoke Gradle script → Tasks: `clean test workspace`
-* Process Job DSLs → DSL Scripts: `build/workspace/**/*.groovy`
+* Invoke Gradle script → Tasks: `clean test`
+* Process Job DSLs → DSL Scripts: `jobs/**/*dsl.groovy`
+* Process Job DSLs → Additional classpath: `src/main/groovy`
 * Publish JUnit test result report → Test report XMLs: `build/test-results/**/*.xml`
