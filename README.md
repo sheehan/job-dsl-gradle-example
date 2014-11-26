@@ -24,5 +24,5 @@ An example [Job DSL](https://github.com/jenkinsci/job-dsl-plugin) project that u
 
 * Invoke Gradle script → Use Gradle Wrapper: `true`
 * Invoke Gradle script → Tasks: `clean test workspace`
-* Process Job DSLs → DSL Scripts: `build/workspace/*.groovy`
+* Process Job DSLs → DSL Scripts: `build/workspace/**/*.groovy`
 * Publish JUnit test result report → Test report XMLs: `build/test-results/**/*.xml`
