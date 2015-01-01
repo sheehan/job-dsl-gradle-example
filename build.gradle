@@ -1,5 +1,13 @@
 apply plugin: 'groovy'
 
+sourceSets {
+    jobs {
+        groovy {
+            srcDirs 'jobs'
+        }
+    }
+}
+
 repositories {
     mavenCentral()
     maven { url 'http://repo.jenkins-ci.org/releases/' }

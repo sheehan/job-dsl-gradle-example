@@ -1,5 +1,6 @@
 package com.dslexample
 
+import javaposse.jobdsl.dsl.DslFactory
 import javaposse.jobdsl.dsl.Job
 
 /**
@@ -11,8 +12,8 @@ class GrailsCiJobBuilder {
     String description
     String gitUrl
 
-    Job build(jobParent) {
-        jobParent.job {
+    Job build(DslFactory dslFactory) {
+        dslFactory.job {
             it.name this.name
             it.description this.description
             logRotator(-1, 5, -1, -1)

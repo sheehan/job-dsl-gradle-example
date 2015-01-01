@@ -1,4 +1,5 @@
 import com.dslexample.GrailsCiJobBuilder
+import javaposse.jobdsl.dsl.DslFactory
 
 job {
     name 'example-job'
@@ -14,10 +15,10 @@ new GrailsCiJobBuilder(
     name: 'example-grails-job',
     description: 'An example using a job builder for a Grails project.',
     gitUrl: 'git@github.com:example/example.git'
-).build(this)
+).build(this as DslFactory)
 
 new GrailsCiJobBuilder(
     name: 'another-example-grails-job',
     description: 'Another example using a job builder for a Grails project.',
     gitUrl: 'git@github.com:example/example2.git'
-).build(this)
+).build(this as DslFactory)
