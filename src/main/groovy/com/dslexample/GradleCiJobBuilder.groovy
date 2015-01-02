@@ -1,5 +1,6 @@
 package com.dslexample
 
+import javaposse.jobdsl.dsl.DslFactory
 import javaposse.jobdsl.dsl.Job
 
 /**
@@ -19,8 +20,8 @@ class GradleCiJobBuilder {
     String artifacts = '**/build/libs/*.jar'
     List mailerRecipients = []
 
-    Job build(jobParent) {
-        jobParent.job {
+    Job build(DslFactory dslFactory) {
+        dslFactory.job {
             it.name this.name
             it.description this.description
             logRotator(-1, 5, -1, -1)
