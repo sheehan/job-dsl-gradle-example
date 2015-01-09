@@ -23,6 +23,6 @@ An example [Job DSL](https://github.com/jenkinsci/job-dsl-plugin) project that u
 
 * Invoke Gradle script → Use Gradle Wrapper: `true`
 * Invoke Gradle script → Tasks: `clean test`
-* Process Job DSLs → DSL Scripts: `jobs/**/*dsl.groovy`
+* Process Job DSLs → DSL Scripts: `jobs/**/*.groovy`
 * Process Job DSLs → Additional classpath: `src/main/groovy`
 * Publish JUnit test result report → Test report XMLs: `build/test-results/**/*.xml`
