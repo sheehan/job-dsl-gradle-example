@@ -2,6 +2,7 @@ package com.dslexample
 
 import javaposse.jobdsl.dsl.JobManagement
 import javaposse.jobdsl.dsl.JobParent
+import javaposse.jobdsl.dsl.MemoryJobManagement
 
 
 class JobSpecMixin {
@@ -13,9 +14,7 @@ class JobSpecMixin {
                 return null
             }
         }
-        JobManagement jm = [
-                getPluginVersion: { String pluginShortName -> null },
-        ] as JobManagement
+        JobManagement jm = new MemoryJobManagement()
         jp.setJm(jm)
         jp
     }
