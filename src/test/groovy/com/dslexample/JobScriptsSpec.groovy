@@ -3,6 +3,7 @@ package com.dslexample
 import groovy.io.FileType
 import javaposse.jobdsl.dsl.DslScriptLoader
 import javaposse.jobdsl.dsl.JobManagement
+import javaposse.jobdsl.dsl.MemoryJobManagement
 import spock.lang.Specification
 import spock.lang.Unroll
 
@@ -14,10 +15,7 @@ class JobScriptsSpec extends Specification {
     @Unroll
     void 'test script #file.name'(File file) {
         given:
-        JobManagement jm = Mock(JobManagement)
-        jm.getOutputStream() >> System.out
-        jm.getParameters() >> [:]
-        jm.createOrUpdateConfig(* _) >> true
+        JobManagement jm = new MemoryJobManagement()
 
         when:
         DslScriptLoader.runDslEngine file.text, jm
