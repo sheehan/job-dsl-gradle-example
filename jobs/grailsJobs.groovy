@@ -1,13 +1,11 @@
 import com.dslexample.GrailsCiJobBuilder
 import javaposse.jobdsl.dsl.DslFactory
 
-job {
-    name 'example-job'
+job('example-job') {
     description 'An example for the Gradle project.'
 }
 
-job {
-    name 'another-example-job'
+job('another-example-job') {
     description 'An example for the Gradle project.'
 }
 

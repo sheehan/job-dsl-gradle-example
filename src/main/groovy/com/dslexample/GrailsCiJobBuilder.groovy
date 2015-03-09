@@ -13,8 +13,7 @@ class GrailsCiJobBuilder {
     String gitUrl
 
     Job build(DslFactory dslFactory) {
-        dslFactory.job {
-            it.name this.name
+        dslFactory.job(name) {
             it.description this.description
             logRotator(-1, 5, -1, -1)
             scm {
