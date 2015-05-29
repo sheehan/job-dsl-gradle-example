@@ -24,9 +24,3 @@ dependencies {
 task wrapper(type: Wrapper) {
     gradleVersion = '2.4'
 }
-
-task workspace(type: Copy) {
-    from fileTree(dir: 'jobs')
-    from 'src/main/groovy'
-    into 'build/workspace'
-}
