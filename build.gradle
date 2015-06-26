@@ -15,7 +15,7 @@ repositories {
 
 dependencies {
     compile 'org.codehaus.groovy:groovy:2.1.3'
-    compile 'org.jenkins-ci.plugins:job-dsl-core:1.33'
+    compile 'org.jenkins-ci.plugins:job-dsl-core:1.34'
     testCompile('org.spockframework:spock-core:0.7-groovy-2.0') {
         exclude module: 'groovy-all'
     }
