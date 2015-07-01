@@ -34,7 +34,7 @@ Or manually create a job with the same structure:
 * Process Job DSLs → Additional classpath: `src/main/groovy`
 * Publish JUnit test result report → Test report XMLs: `build/test-results/**/*.xml`
 
-## Rest API Runner
+## REST API Runner
 
 A gradle task is configured that can be used to create/update jobs via the Jenkins REST API, if desired. Normally
 a seed job is used to keep jobs in sync with the DSL, but this runner might be useful if you'd rather process the
