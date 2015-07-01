@@ -10,6 +10,7 @@ sourceSets {
 
 repositories {
     mavenCentral()
+    jcenter()
     maven { url 'http://repo.jenkins-ci.org/releases/' }
 }
 
@@ -19,6 +20,18 @@ dependencies {
     testCompile('org.spockframework:spock-core:0.7-groovy-2.0') {
         exclude module: 'groovy-all'
     }
+
+    // for the RestApiScriptRunner
+    compile('ant:ant:1.7.0')
+    compile('org.codehaus.groovy.modules.http-builder:http-builder:0.7.2') {
+        exclude(module: 'groovy')
+    }
+}
+
+task rest(dependsOn: 'classes', type: JavaExec) {
+    main = 'com.dslexample.rest.RestApiScriptRunner'
+    classpath = sourceSets.main.runtimeClasspath
+    systemProperties System.getProperties()
 }
 
 task wrapper(type: Wrapper) {
