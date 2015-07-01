@@ -19,11 +19,12 @@ An example [Job DSL](https://github.com/jenkinsci/job-dsl-plugin) project that u
 
 * `./gradlew test` runs the specs.
 
-`JobScriptsSpec` will loop through all DSL files and make sure they don't throw any exceptions when processed.
+[JobScriptsSpec](https://github.com/sheehan/job-dsl-gradle-example/blob/master/src/test/groovy/com/dslexample/JobScriptsSpec.groovy) 
+will loop through all DSL files and make sure they don't throw any exceptions when processed.
 
 ## Seed job
 
-You can create the example seed job via the Rest API Runner (see below) using the pattern `/jobs/seed.groovy`.
+You can create the example seed job via the Rest API Runner (see below) using the pattern `jobs/seed.groovy`.
 
 Or manually create a job with the same structure:
 
