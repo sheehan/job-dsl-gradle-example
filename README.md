@@ -22,7 +22,7 @@ An example [Job DSL](https://github.com/jenkinsci/job-dsl-plugin) project that u
 [JobScriptsSpec](https://github.com/sheehan/job-dsl-gradle-example/blob/master/src/test/groovy/com/dslexample/JobScriptsSpec.groovy) 
 will loop through all DSL files and make sure they don't throw any exceptions when processed.
 
-## Seed job
+## Seed Job
 
 You can create the example seed job via the Rest API Runner (see below) using the pattern `jobs/seed.groovy`.
 
