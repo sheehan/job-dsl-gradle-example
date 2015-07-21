@@ -23,7 +23,9 @@ class GradleCiJobBuilder {
     Job build(DslFactory dslFactory) {
         dslFactory.job(name) {
             it.description this.description
-            logRotator(-1, 5, -1, -1)
+            logRotator {
+                numToKeep 5
+            }
             scm {
                 git this.gitUrl, gitBranch
             }
