@@ -16,6 +16,9 @@ class JobScriptsSpec extends Specification {
     void 'test script #file.name'(File file) {
         given:
         JobManagement jm = new MemoryJobManagement()
+        new File('resources').eachFileRecurse(FileType.FILES) {
+            jm.availableFiles[it.path] = it.text
+        }
 
         when:
         DslScriptLoader.runDslEngine file.text, jm
@@ -30,10 +33,11 @@ class JobScriptsSpec extends Specification {
     static List<File> getJobFiles() {
         List<File> files = []
         new File('jobs').eachFileRecurse(FileType.FILES) {
-            files << it
+            if (it.name.endsWith('.groovy')) {
+                files << it
+            }
         }
         files
     }
-
 }
 

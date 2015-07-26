@@ -10,7 +10,10 @@ class GrailsCiJobBuilder {
 
     String name
     String description
-    String gitUrl
+    String ownerAndProject
+    String gitBranch = 'master'
+    String pollScmSchedule = '*/5 * * * *'
+    List<String> emails
 
     Job build(DslFactory dslFactory) {
         dslFactory.job(name) {
@@ -19,10 +22,10 @@ class GrailsCiJobBuilder {
                 numToKeep 5
             }
             scm {
-                git this.gitUrl, 'master'
+                github ownerAndProject, gitBranch
             }
             triggers {
-                scm '*/5 * * * *'
+                scm pollScmSchedule
             }
             steps {
                 shell 'chmod a+x ./grailsw'
@@ -39,6 +42,9 @@ class GrailsCiJobBuilder {
             publishers {
                 archiveArtifacts 'target/**/*.war'
                 archiveJunit 'target/test-reports/**/*Spec.xml'
+                if (emails) {
+                    mailer emails.join(' ')
+                }
             }
         }
     }
