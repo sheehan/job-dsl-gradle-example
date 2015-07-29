@@ -21,13 +21,9 @@ branches.each { branch ->
         }
         triggers {
             scm 'H/30 * * * *'
-
         }
         steps {
-            grails {
-                useWrapper true
-                targets(['test-app', 'war'])
-            }
+            grails 'test-app war', true
         }
     }
 

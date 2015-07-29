@@ -4,7 +4,6 @@ folder(basePath) {
     description 'This example shows how to use the configure block.'
 }
 
-
 job("$basePath/configure-block-example") {
 
     logRotator {

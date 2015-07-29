@@ -13,13 +13,12 @@ job("$basePath/static-method-example1") {
             useWrapper true
             tasks 'clean test'
             switches '''
-                -Dhttp.proxyHost=xxx
-                -Dhttps.proxyHost=xxx
-                -Dhttp.proxyPort=xxx
-                -Dhttps.proxyPort=xxx
+                -Dhttp.proxyHost=proxy.example.com
+                -Dhttps.proxyHost=proxy.example.com
+                -Dhttp.proxyPort=80
+                -Dhttps.proxyPort=80
             '''
         }
-
     }
 }
 
