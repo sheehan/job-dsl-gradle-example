@@ -17,7 +17,7 @@ branches.each { branch ->
 
     job("$basePath/$safeBranchName/grails-example-build") {
         scm {
-            github repo
+            github repo, branch.name
         }
         triggers {
             scm 'H/30 * * * *'
