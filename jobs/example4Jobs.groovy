@@ -11,21 +11,17 @@ folder(basePath) {
 ].each { Map config ->
 
     job("$basePath/ci-${config.repo}") {
-
         description "Main job for ${config.repo}"
 
         logRotator {
             numToKeep 5
         }
-
         triggers {
             scm 'H/5 * * * *'
         }
-
         steps {
             grails 'test war'
         }
-
         publishers {
             if (config.email) {
                 extendedEmail config.email

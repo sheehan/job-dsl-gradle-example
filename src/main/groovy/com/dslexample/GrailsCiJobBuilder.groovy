@@ -17,7 +17,7 @@ class GrailsCiJobBuilder {
 
     Job build(DslFactory dslFactory) {
         dslFactory.job(name) {
-            it.description this.description
+            it.description description
             logRotator {
                 numToKeep 5
             }

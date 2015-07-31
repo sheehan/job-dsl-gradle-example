@@ -19,9 +19,8 @@ job("$basePath/configure-block-example") {
     }
 
     configure { Node project ->
-        project / buildWrappers / EnvInjectPasswordWrapper {
-            injectGlobalPasswords true
-            maskPasswordParameters true
+        project / publishers / 'com.cloudbees.jenkins.GitHubCommitNotifier' {
+            resultOnFailure 'FAILURE'
         }
     }
 }
