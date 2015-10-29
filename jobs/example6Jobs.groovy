@@ -1,4 +1,4 @@
-String basePath = 'example6'
+String basePath = 'job-dsl-gradle-example/example6'
 
 folder(basePath) {
     description 'This example shows how to include script resources from the workspace.'

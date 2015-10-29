@@ -1,7 +1,7 @@
 import com.dslexample.GradleCiJobBuilder
 import com.dslexample.GrailsCiJobBuilder
 
-String basePath = 'example7'
+String basePath = 'job-dsl-gradle-example/example7'
 List developers = ['dev1@example.com', 'dev2@example.com']
 
 folder(basePath) {

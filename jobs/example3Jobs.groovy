@@ -1,4 +1,4 @@
-String basePath = 'example3'
+String basePath = 'job-dsl-gradle-example/example3'
 
 folder(basePath) {
     description 'This example shows how to use the configure block.'

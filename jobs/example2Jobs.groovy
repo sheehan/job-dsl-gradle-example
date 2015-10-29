@@ -1,6 +1,6 @@
 import groovy.json.JsonSlurper
 
-String basePath = 'example2'
+String basePath = 'job-dsl-gradle-example/example2'
 String repo = 'sheehan/grails-example'
 
 folder(basePath) {
