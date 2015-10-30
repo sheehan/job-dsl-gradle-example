@@ -35,6 +35,12 @@ An example [Job DSL](https://github.com/jenkinsci/job-dsl-plugin) project that u
 [JobScriptsSpec](src/test/groovy/com/dslexample/JobScriptsSpec.groovy) 
 will loop through all DSL files and make sure they don't throw any exceptions when processed.
 
+## Debug XML 
+
+* `./gradlew debugXml -Dpattern=<pattern>` runs the DSL and writes the XML output to files in `build/debug-xml`
+
+This can be useful if you want to inspect the generated XML before check-in.
+
 ## Seed Job
 
 You can create the example seed job via the Rest API Runner (see below) using the pattern `jobs/seed.groovy`.

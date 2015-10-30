@@ -22,14 +22,22 @@ dependencies {
     }
 
     // for the RestApiScriptRunner
-    compile('ant:ant:1.7.0')
     compile('org.codehaus.groovy.modules.http-builder:http-builder:0.7.2') {
         exclude(module: 'groovy')
     }
+
+    // for the RestApiScriptRunner and XmlOutputRunner
+    compile('ant:ant:1.7.0')
 }
 
 task rest(dependsOn: 'classes', type: JavaExec) {
     main = 'com.dslexample.rest.RestApiScriptRunner'
+    classpath = sourceSets.main.runtimeClasspath
+    systemProperties System.getProperties()
+}
+
+task debugXml(dependsOn: 'classes', type: JavaExec) {
+    main = 'com.dslexample.debug.XmlOutputRunner'
     classpath = sourceSets.main.runtimeClasspath
     systemProperties System.getProperties()
 }
