@@ -20,7 +20,7 @@ outputDir.deleteDir()
 
 MemoryJobManagement jm = new MemoryJobManagement()
 new File('resources').eachFileRecurse(FileType.FILES) {
-    jm.availableFiles[it.path] = it.text
+    jm.availableFiles[it.path.replaceAll('\\\\', '/')] = it.text
 }
 
 println '\nProcessing DSL files:\n'
