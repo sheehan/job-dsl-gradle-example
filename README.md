@@ -35,7 +35,7 @@ will loop through all DSL files and make sure they don't throw any exceptions wh
 
 ## Debug XML 
 
-* `./gradlew debugXml -Dpattern=<pattern>` runs the DSL and writes the XML output to files in `build/debug-xml`
+* `./gradlew debugXml -Dpattern=jobs/**/*Jobs.groovy` runs the DSL and writes the XML output to files in `build/debug-xml`
 
 This can be useful if you want to inspect the generated XML before check-in.
 
