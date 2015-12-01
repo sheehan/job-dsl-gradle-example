@@ -30,6 +30,8 @@ dependencies {
     compile('ant:ant:1.7.0')
 }
 
+tasks.getByName('test').inputs.files(sourceSets.jobs.groovy.srcDirs)
+
 task rest(dependsOn: 'classes', type: JavaExec) {
     main = 'com.dslexample.rest.RestApiScriptRunner'
     classpath = sourceSets.main.runtimeClasspath
