@@ -4,6 +4,7 @@ import groovy.io.FileType
 import javaposse.jobdsl.dsl.DslScriptLoader
 import javaposse.jobdsl.dsl.JobManagement
 import javaposse.jobdsl.dsl.MemoryJobManagement
+import javaposse.jobdsl.dsl.helpers.triggers.TriggerContext
 import spock.lang.Specification
 import spock.lang.Unroll
 
@@ -15,7 +16,8 @@ class JobScriptsSpec extends Specification {
     @Unroll
     void 'test script #file.name'(File file) {
         given:
-        JobManagement jm = new MemoryJobManagement()
+        JobManagement jm = Spy(MemoryJobManagement)
+        jm.callExtension('githubPullRequest', _, TriggerContext, _) >> JobManagement.NO_VALUE
         new File('resources').eachFileRecurse(FileType.FILES) {
             jm.availableFiles[it.path.replaceAll('\\\\', '/')] = it.text
         }

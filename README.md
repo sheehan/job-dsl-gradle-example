@@ -25,6 +25,7 @@ An example [Job DSL](https://github.com/jenkinsci/job-dsl-plugin) project that u
 * [Example 5](jobs/example5Jobs.groovy) - shows how to pull out common components into static methods
 * [Example 6](jobs/example6Jobs.groovy) - shows how to include script resources from the workspace
 * [Example 7](jobs/example7Jobs.groovy) - shows how to create jobs using builders
+* [Example 8](jobs/example8Jobs.groovy) - shows how to use DSL extensions provided by other plugins
 
 ## Testing
 
