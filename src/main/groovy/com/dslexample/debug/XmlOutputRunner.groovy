@@ -3,7 +3,6 @@ package com.dslexample.debug
 import groovy.io.FileType
 import javaposse.jobdsl.dsl.*
 
-
 /**
  * Runs the DSL engine and writes the XML output to files.
  */
@@ -18,7 +17,17 @@ if (!pattern) {
 File outputDir = new File('./build/debug-xml')
 outputDir.deleteDir()
 
-MemoryJobManagement jm = new MemoryJobManagement()
+MemoryJobManagement jm = new MemoryJobManagement() {
+    @Override
+    Node callExtension(String name, Item item, Class<? extends ExtensibleContext> contextType, Object... args) {
+        if (name == 'githubPullRequest') {
+            println "Warning githubPullRequest call ignored locally"
+            return NO_VALUE
+        }
+        super.callExtension(name, item, contextType, args)
+    }
+}
+
 new File('resources').eachFileRecurse(FileType.FILES) {
     jm.availableFiles[it.path.replaceAll('\\\\', '/')] = it.text
 }
