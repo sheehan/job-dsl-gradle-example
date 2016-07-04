@@ -46,7 +46,7 @@ dependencies {
     }
 
     // for the RestApiScriptRunner and XmlOutputRunner
-    compile('ant:ant:1.7.0')
+    compile('org.apache.ant:ant:1.9.7')
 }
 
 task resolveTestPlugins(type: Copy) {
