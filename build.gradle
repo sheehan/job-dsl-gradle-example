@@ -5,6 +5,8 @@ sourceSets {
         groovy {
             srcDirs 'jobs'
         }
+        compileClasspath += sourceSets.main.output
+        runtimeClasspath += sourceSets.main.output
     }
 }
 
