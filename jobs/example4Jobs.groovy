@@ -24,7 +24,9 @@ folder(basePath) {
         }
         publishers {
             if (config.email) {
-                extendedEmail config.email
+                extendedEmail {
+                    recipientList config.email
+                }
             }
         }
     }
