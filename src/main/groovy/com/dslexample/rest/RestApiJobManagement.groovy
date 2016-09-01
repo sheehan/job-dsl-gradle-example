@@ -8,6 +8,7 @@ import javaposse.jobdsl.dsl.*
 class RestApiJobManagement extends MockJobManagement {
 
     final RESTClient restClient
+    private boolean crumbHeaderSet = false
 
     RestApiJobManagement(String baseUrl) {
         restClient = new RESTClient(baseUrl)
@@ -15,6 +16,7 @@ class RestApiJobManagement extends MockJobManagement {
     }
 
     void setCredentials(String username, String password) {
+        crumbHeaderSet = false
         restClient.headers['Authorization'] = 'Basic ' + "$username:$password".bytes.encodeBase64()
     }
 
@@ -83,6 +85,7 @@ class RestApiJobManagement extends MockJobManagement {
             path = isView ? 'createView' : 'createItem'
         }
 
+        setCrumbHeader()
         HttpResponseDecorator resp = restClient.post(
             path: path,
             body: xml,
@@ -94,6 +97,7 @@ class RestApiJobManagement extends MockJobManagement {
     }
 
     private boolean update(String name, String xml, boolean isView) {
+        setCrumbHeader()
         HttpResponseDecorator resp = restClient.post(
             path: getPath(name, isView) + '/config.xml',
             body: xml,
@@ -104,6 +108,7 @@ class RestApiJobManagement extends MockJobManagement {
     }
 
     private String fetchExistingXml(String name, boolean isView) {
+        setCrumbHeader()
         HttpResponseDecorator resp = restClient.get(
             contentType: ContentType.TEXT,
             path: getPath(name, isView) + '/config.xml',
@@ -117,5 +122,16 @@ class RestApiJobManagement extends MockJobManagement {
             return '/' + getPath(name[1..-1], isView)
         }
         isView ? "view/$name" : "job/${name.replaceAll('/', '/job/')}"
+    }
+
+    private setCrumbHeader() {
+        if (crumbHeaderSet)
+            return
+
+        HttpResponseDecorator resp = restClient.get(path: 'crumbIssuer/api/xml')
+        if (resp.status == 200) {
+            restClient.headers[resp.data.crumbRequestField] = resp.data.crumb
+        }
+        crumbHeaderSet = true
     }
 }
