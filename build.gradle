@@ -48,7 +48,7 @@ dependencies {
         exclude(module: 'groovy')
     }
 
-    // for the RestApiScriptRunner and XmlOutputRunner
+    // for the RestApiScriptRunner
     compile('org.apache.ant:ant:1.9.7')
 }
 
@@ -68,6 +68,8 @@ test {
     dependsOn tasks.resolveTestPlugins
     inputs.files sourceSets.jobs.groovy.srcDirs
 
+    exclude '**/XmlOutput.class'
+
     // set build directory for Jenkins test harness, JENKINS-26331
     systemProperty 'buildDirectory', project.buildDir.absolutePath
 }
@@ -78,10 +80,15 @@ task rest(dependsOn: 'classes', type: JavaExec) {
     systemProperties System.getProperties()
 }
 
-task debugXml(dependsOn: 'classes', type: JavaExec) {
-    main = 'com.dslexample.debug.XmlOutputRunner'
-    classpath = sourceSets.main.runtimeClasspath
-    systemProperties System.getProperties()
+task debugXml(type: Test) {
+    dependsOn tasks.resolveTestPlugins
+    inputs.files sourceSets.jobs.groovy.srcDirs
+
+    include '**/XmlOutput.class'
+
+    // set build directory for Jenkins test harness, JENKINS-26331
+    systemProperty 'buildDirectory', project.buildDir.absolutePath
+    systemProperty 'pattern', System.getProperty('pattern')
 }
 
 task wrapper(type: Wrapper) {
