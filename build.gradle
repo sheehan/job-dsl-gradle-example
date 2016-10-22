@@ -80,17 +80,6 @@ task rest(dependsOn: 'classes', type: JavaExec) {
     systemProperties System.getProperties()
 }
 
-task debugXml(type: Test) {
-    dependsOn tasks.resolveTestPlugins
-    inputs.files sourceSets.jobs.groovy.srcDirs
-
-    include '**/XmlOutput.class'
-
-    // set build directory for Jenkins test harness, JENKINS-26331
-    systemProperty 'buildDirectory', project.buildDir.absolutePath
-    systemProperty 'pattern', System.getProperty('pattern')
-}
-
 task wrapper(type: Wrapper) {
     gradleVersion = '2.14'
 }
