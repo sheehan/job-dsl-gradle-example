@@ -17,8 +17,10 @@ if (username && password) {
     jm.setCredentials username, password
 }
 
+DslScriptLoader scriptLoader = new DslScriptLoader(jm)
+
 new FileNameFinder().getFileNames('.', pattern).each { String fileName ->
     println "\nprocessing file: $fileName"
     File file = new File(fileName)
-    DslScriptLoader.runDslEngine(file.text, jm)
+    scriptLoader.runScript(file.text)
 }
