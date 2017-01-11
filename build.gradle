@@ -62,9 +62,17 @@ task resolveTestPlugins(type: Copy) {
     into new File(sourceSets.test.output.resourcesDir, 'test-dependencies')
     include '*.hpi'
     include '*.jpi'
+    def mapping = [:]
+
+    doFirst {
+        configurations.testPlugins.resolvedConfiguration.resolvedArtifacts.each {
+            mapping[it.file.name] = "${it.name}.${it.extension}"
+        }
+    }
+    rename { mapping[it] }
 
     doLast {
-        def baseNames = source.collect { it.name[0..it.name.lastIndexOf('.')-1] }
+        List<String> baseNames = source*.name.collect { mapping[it] }.collect { it[0..it.lastIndexOf('.') - 1] }
         new File(destinationDir, 'index').setText(baseNames.join('\n'), 'UTF-8')
     }
 }
