@@ -8,13 +8,16 @@ import javaposse.jobdsl.dsl.MemoryJobManagement
 class JobSpecMixin {
 
     JobParent createJobParent() {
+       createJobParentFor(new MemoryJobManagement())
+    }
+
+    JobParent createJobParentFor(JobManagement jm) {
         JobParent jp = new JobParent() {
             @Override
             Object run() {
                 return null
             }
         }
-        JobManagement jm = new MemoryJobManagement()
         jp.setJm(jm)
         jp
     }
