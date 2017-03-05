@@ -41,13 +41,18 @@ You can create the example seed job via the Rest API Runner (see below) using th
 
 Or manually create a job with the same structure:
 
-* Invoke Gradle script → Use Gradle Wrapper: `true`
-* Invoke Gradle script → Tasks: `clean test`
-* Process Job DSLs → DSL Scripts: `jobs/**/*Jobs.groovy`
-* Process Job DSLs → Additional classpath: `src/main/groovy`
-* Publish JUnit test result report → Test report XMLs: `build/test-results/**/*.xml`
+* Invoke Gradle script
+   * Use Gradle Wrapper: `true`
+   * Tasks: `clean test`
+* Process Job DSLs
+   * DSL Scripts: `jobs/**/*Jobs.groovy`
+   * Additional classpath: `src/main/groovy`
+* Publish JUnit test result report
+   * Test report XMLs: `build/test-results/**/*.xml`
 
 ## REST API Runner
+
+Note: the REST API Runner does not work with [Automatically Generated DSL](https://github.com/jenkinsci/job-dsl-plugin/wiki/Automatically-Generated-DSL). 
 
 A gradle task is configured that can be used to create/update jobs via the Jenkins REST API, if desired. Normally
 a seed job is used to keep jobs in sync with the DSL, but this runner might be useful if you'd rather process the
