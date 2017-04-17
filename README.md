@@ -50,6 +50,9 @@ Or manually create a job with the same structure:
 * Publish JUnit test result report
    * Test report XMLs: `build/test-results/**/*.xml`
 
+Note that starting with Job DSL 1.60 the "Additional classpath" setting is not available when
+[Job DSL script security](https://github.com/jenkinsci/job-dsl-plugin/wiki/Script-Security) is enabled.
+
 ## REST API Runner
 
 Note: the REST API Runner does not work with [Automatically Generated DSL](https://github.com/jenkinsci/job-dsl-plugin/wiki/Automatically-Generated-DSL). 
