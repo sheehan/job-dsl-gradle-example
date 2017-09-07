@@ -26,7 +26,7 @@ configurations {
 configurations.all*.exclude group: 'xalan'
 
 dependencies {
-    compile 'org.codehaus.groovy:groovy-all:2.4.7'
+    compile 'org.codehaus.groovy:groovy-all:2.4.8'
     compile "org.jenkins-ci.plugins:job-dsl-core:${jobDslVersion}"
 
     testCompile 'org.spockframework:spock-core:1.0-groovy-2.4'
@@ -40,13 +40,14 @@ dependencies {
     // Job DSL plugin including plugin dependencies
     testCompile "org.jenkins-ci.plugins:job-dsl:${jobDslVersion}"
     testCompile "org.jenkins-ci.plugins:job-dsl:${jobDslVersion}@jar"
-    testCompile 'org.jenkins-ci.plugins:structs:1.2@jar'
-    testCompile 'org.jenkins-ci.plugins:cloudbees-folder:5.0@jar'
+    testCompile 'org.jenkins-ci.plugins:structs:1.6@jar'
+    testCompile 'org.jenkins-ci.plugins:cloudbees-folder:5.12@jar'
 
     // plugins to install in test instance
     testPlugins 'org.jenkins-ci.plugins:ghprb:1.31.4'
     testPlugins 'com.coravy.hudson.plugins.github:github:1.19.0'
-    testPlugins 'org.jenkins-ci.plugins:cloudbees-folder:5.0'
+    testPlugins 'org.jenkins-ci.plugins:cloudbees-folder:5.12'
+    testPlugins 'org.jenkins-ci.plugins:credentials:2.1.10'
 
     // for the RestApiScriptRunner
     compile('org.codehaus.groovy.modules.http-builder:http-builder:0.7.2') {
