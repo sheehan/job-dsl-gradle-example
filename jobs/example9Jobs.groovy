@@ -13,6 +13,7 @@ job("$basePath/grails-legacy-build") {
                     cvsRoot repo
                     passwordRequired false
                     password null
+                    checkoutCurrentTimestamp false
                     compressionLevel(-1)
                     repositoryBrowser {}
                     repositoryItems {
