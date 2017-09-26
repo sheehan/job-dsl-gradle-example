@@ -2,7 +2,7 @@ String basePath = 'example8'
 String repo = 'sheehan/grails-example'
 
 folder(basePath) {
-    description 'This example shows hwp to use DSL extensions provided by other plugins.'
+    description 'This example shows how to use DSL extensions provided by other plugins.'
 }
 
 job("$basePath/grails-example-build") {
