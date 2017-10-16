@@ -1,4 +1,4 @@
-String basePath = 'example4'
+String basePath = 'job-dsl-gradle-example/example4'
 
 folder(basePath) {
     description 'This example shows a way to reuse job definitions for jobs that differ only with a few properties.'
