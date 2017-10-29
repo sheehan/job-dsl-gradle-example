@@ -35,7 +35,7 @@ An example [Job DSL](https://github.com/jenkinsci/job-dsl-plugin) project that u
 will loop through all DSL files and make sure they don't throw any exceptions when processed. All XML output files are written to `build/debug-xml`. 
 This can be useful if you want to inspect the generated XML before check-in. Plugins providing auto-generated DSL must be added to the build dependencies.
 
-If you prefer to stub the auto-generated DSL, you can use [JobScriptsSpecAlternative](src/test/groovy/com/dslexample/JobScriptsIntegrationSpecAlternative.groovy),
+If you prefer to stub the auto-generated DSL, you can use [JobScriptsSpecAlternative](src/test/groovy/com/dslexample/JobScriptsSpecAlternative.groovy),
 though you may miss some syntax errors.
 
 ## Seed Job
