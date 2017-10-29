@@ -3,7 +3,7 @@ apply plugin: 'groovy'
 sourceSets {
     jobs {
         groovy {
-            srcDirs 'jobs'
+            srcDirs 'src/jobs'
             compileClasspath += main.compileClasspath
         }
         compileClasspath += sourceSets.main.output
@@ -48,14 +48,6 @@ dependencies {
     testPlugins 'com.coravy.hudson.plugins.github:github:1.19.0'
     testPlugins 'org.jenkins-ci.plugins:cloudbees-folder:5.12'
     testPlugins 'org.jenkins-ci.plugins:credentials:2.1.10'
-
-    // for the RestApiScriptRunner
-    compile('org.codehaus.groovy.modules.http-builder:http-builder:0.7.2') {
-        exclude(module: 'groovy')
-    }
-
-    // for the RestApiScriptRunner
-    compile('org.apache.ant:ant:1.9.7')
 }
 
 task resolveTestPlugins(type: Copy) {
@@ -84,12 +76,6 @@ test {
 
     // set build directory for Jenkins test harness, JENKINS-26331
     systemProperty 'buildDirectory', project.buildDir.absolutePath
-}
-
-task rest(dependsOn: 'classes', type: JavaExec) {
-    main = 'com.dslexample.rest.RestApiScriptRunner'
-    classpath = sourceSets.main.runtimeClasspath
-    systemProperties System.getProperties()
 }
 
 task wrapper(type: Wrapper) {

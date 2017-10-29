@@ -46,11 +46,11 @@ job("$basePath/resources-example-inline") {
 job("$basePath/resources-example-external") {
 
     steps {
-        shell readFileFromWorkspace('resources/gruntTest.sh')
+        shell readFileFromWorkspace('src/scripts/gruntTest.sh')
     }
 
     publishers {
-        groovyPostBuild readFileFromWorkspace('resources/postProcess.groovy')
+        groovyPostBuild readFileFromWorkspace('src/scripts/postProcess.groovy')
     }
 }
 

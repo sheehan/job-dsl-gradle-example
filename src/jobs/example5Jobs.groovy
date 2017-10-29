@@ -1,4 +1,4 @@
-import com.dslexample.StepsUtil
+import com.dslexample.util.StepsUtil
 
 String basePath = 'example5'
 

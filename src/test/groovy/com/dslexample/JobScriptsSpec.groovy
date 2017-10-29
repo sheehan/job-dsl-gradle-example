@@ -1,6 +1,6 @@
 package com.dslexample
 
-import groovy.io.FileType
+import com.dslexample.support.TestUtil
 import hudson.model.Item
 import hudson.model.View
 import javaposse.jobdsl.dsl.DslScriptLoader
@@ -18,6 +18,8 @@ import spock.lang.Unroll
 
 /**
  * Tests that all dsl scripts in the jobs directory will compile. All config.xml's are written to build/debug-xml.
+ *
+ * This runs against the jenkins test harness. Plugins providing auto-generated DSL must be added to the build dependencies.
  */
 class JobScriptsSpec extends Specification {
 
@@ -39,58 +41,32 @@ class JobScriptsSpec extends Specification {
 
         when:
         GeneratedItems items = new DslScriptLoader(jm).runScript(file.text)
-        writeItems items
+        writeItems(items, outputDir)
 
         then:
         noExceptionThrown()
 
         where:
-        file << jobFiles
+        file << TestUtil.getJobFiles()
     }
 
     /**
      * Write the config.xml for each generated job and view to the build dir.
      */
-    void writeItems(GeneratedItems items) {
+    private void writeItems(GeneratedItems items, File outputDir) {
         Jenkins jenkins = jenkinsRule.jenkins
-
         items.jobs.each { GeneratedJob generatedJob ->
             String jobName = generatedJob.jobName
             Item item = jenkins.getItemByFullName(jobName)
             String text = new URL(jenkins.rootUrl + item.url + 'config.xml').text
-            writeFile new File(outputDir, 'jobs'), jobName, text
+            TestUtil.writeFile(new File(outputDir, 'jobs'), jobName, text)
         }
 
         items.views.each { GeneratedView generatedView ->
             String viewName = generatedView.name
             View view = jenkins.getView(viewName)
             String text = new URL(jenkins.rootUrl + view.url + 'config.xml').text
-            writeFile new File(outputDir, 'views'), viewName, text
+            TestUtil.writeFile(new File(outputDir, 'views'), viewName, text)
         }
-    }
-
-    /**
-     * Write a single XML file, creating any nested dirs.
-     */
-    void writeFile(File dir, String name, String xml) {
-        List tokens = name.split('/')
-        File folderDir = tokens[0..<-1].inject(dir) { File tokenDir, String token ->
-            new File(tokenDir, token)
-        }
-        folderDir.mkdirs()
-
-        File xmlFile = new File(folderDir, "${tokens[-1]}.xml")
-        xmlFile.text = xml
-    }
-
-    static List<File> getJobFiles() {
-        List<File> files = []
-        new File('jobs').eachFileRecurse(FileType.FILES) {
-            if (it.name.endsWith('.groovy')) {
-                files << it
-            }
-        }
-        files
     }
 }
-

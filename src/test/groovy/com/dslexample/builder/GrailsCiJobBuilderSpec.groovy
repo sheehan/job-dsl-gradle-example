@@ -1,21 +1,20 @@
-package com.dslexample
+package com.dslexample.builder
 
+import com.dslexample.support.MockJobParent
 import javaposse.jobdsl.dsl.Job
 import javaposse.jobdsl.dsl.JobParent
 import spock.lang.Specification
 
-@Mixin(JobSpecMixin)
 class GrailsCiJobBuilderSpec extends Specification {
 
-    JobParent jobParent = createJobParent()
+    JobParent jobParent = new MockJobParent()
     GrailsCiJobBuilder builder
 
     def setup() {
-        builder = new GrailsCiJobBuilder(
-            name: 'test-job',
-            description: 'testing',
-            ownerAndProject: 'sheehan/example'
-        )
+        builder = new GrailsCiJobBuilder()
+            .name('test-job')
+            .description('testing')
+            .ownerAndProject('sheehan/example')
     }
 
     void 'test XML output'() {
@@ -33,8 +32,8 @@ class GrailsCiJobBuilderSpec extends Specification {
 
     void 'test XML output - with overrides'() {
         given:
-        builder.emails = ['test1', 'test2']
-        builder.pollScmSchedule = '@weekly'
+        builder.emails (['test1', 'test2'])
+        builder.pollScmSchedule ('@weekly')
 
         when:
         Job job = builder.build(jobParent)

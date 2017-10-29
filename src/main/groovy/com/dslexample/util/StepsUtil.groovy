@@ -1,4 +1,4 @@
-package com.dslexample
+package com.dslexample.util
 
 class StepsUtil {
 
