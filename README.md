@@ -60,5 +60,9 @@ Note that starting with Job DSL 1.60 the "Additional classpath" setting is not a
 
 * [Job DSL Playground](http://job-dsl.herokuapp.com/) - App for debugging job DSL scripts.
 * [Job DSL API Viewer](https://jenkinsci.github.io/job-dsl-plugin/) - Full DSL syntax reference.
-* [Gradle Job DSL Support Plugin](https://github.com/AOEpeople/gradle-jenkins-job-dsl-plugin) - Plugin that automatically applies the functionality laid out in this example repo.
 * [Job DSL REST Example](https://github.com/sheehan/job-dsl-rest-example) - Example that shows how to make Job DSL updates via the Jenkins REST API. Originally part of this repo, later split off.
+
+#### Gradle Plugins
+Plugins that automatically apply the functionality laid out in this example repo.
+* [Gradle Job DSL Support Plugin](https://github.com/AOEpeople/gradle-jenkins-job-dsl-plugin) - Plugin for easy management of Jenkins Job DSL scripts with Gradle.
+* [Gradle Jenkins Job DSL Plugin](https://github.com/heremaps/gradle-jenkins-jobdsl-plugin) - Plugin to manage Jenkins Job DSL projects in a Gradle project.
