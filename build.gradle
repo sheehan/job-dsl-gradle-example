@@ -34,7 +34,9 @@ dependencies {
 
     // Jenkins test harness dependencies
     testCompile 'org.jenkins-ci.main:jenkins-test-harness:2.8'
-    testCompile "org.jenkins-ci.main:jenkins-war:${jenkinsVersion}"
+    testCompile("org.jenkins-ci.main:jenkins-war:${jenkinsVersion}") {
+        exclude group: 'org.jenkins-ci.ui', module: 'bootstrap' // https://github.com/sheehan/job-dsl-gradle-example/issues/87
+    }
     testCompile "org.jenkins-ci.main:jenkins-war:${jenkinsVersion}:war-for-test@jar"
 
     // Job DSL plugin including plugin dependencies
