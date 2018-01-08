@@ -7,7 +7,7 @@ folder(basePath) {
 
 job("$basePath/grails-legacy-build") {
     scm {
-        cvsscm {
+        cvsscm { // <-- NOTE: provided by testPlugins dependency in build.gradle
             repositories {
                 cvsRepository {
                     cvsRoot repo
@@ -38,6 +38,7 @@ job("$basePath/grails-legacy-build") {
             disableCvsQuiet false
             cleanOnFailedUpdate false
             forceCleanCopy false
+            checkoutCurrentTimestamp false
         }
     }
     triggers {
@@ -47,6 +48,22 @@ job("$basePath/grails-legacy-build") {
         grails {
             useWrapper true
             targets(['test-app', 'war'])
+        }
+    }
+}
+
+folder('images-folder') {
+    displayName('Docker Images')
+
+    properties {
+        folderLibraries { // <-- NOTE: provided by testPlugins dependency in build.gradle
+            libraries {
+                libraryConfiguration {
+                    name 'test'
+                    retriever {
+                    }
+                }
+            }
         }
     }
 }
