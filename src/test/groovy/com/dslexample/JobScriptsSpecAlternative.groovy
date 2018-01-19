@@ -6,6 +6,7 @@ import javaposse.jobdsl.dsl.DslScriptLoader
 import javaposse.jobdsl.dsl.JobManagement
 import javaposse.jobdsl.dsl.MemoryJobManagement
 import javaposse.jobdsl.dsl.helpers.ScmContext
+import javaposse.jobdsl.dsl.helpers.properties.FolderPropertiesContext
 import javaposse.jobdsl.dsl.helpers.triggers.TriggerContext
 import spock.lang.Shared
 import spock.lang.Specification
@@ -30,6 +31,7 @@ class JobScriptsSpecAlternative extends Specification {
     def setup() {
         stubGeneratedDslCall TriggerContext, 'githubPullRequest'
         stubGeneratedDslCall ScmContext, 'cvsscm'
+        stubGeneratedDslCall FolderPropertiesContext, 'folderLibraries'
 
         new File('src/scripts').eachFileRecurse(FileType.FILES) {
             String path = it.path.replaceAll('\\\\', '/')
