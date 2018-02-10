@@ -26,7 +26,7 @@ configurations {
 configurations.all*.exclude group: 'xalan'
 
 dependencies {
-    compile 'org.codehaus.groovy:groovy-all:2.4.8'
+    compile 'org.codehaus.groovy:groovy-all:2.4.11'
     compile "org.jenkins-ci.plugins:job-dsl-core:${jobDslVersion}"
 
     testCompile 'org.spockframework:spock-core:1.0-groovy-2.4'
@@ -43,7 +43,7 @@ dependencies {
     // Job DSL plugin including plugin dependencies
     testCompile "org.jenkins-ci.plugins:job-dsl:${jobDslVersion}"
     testCompile "org.jenkins-ci.plugins:job-dsl:${jobDslVersion}@jar"
-    testCompile 'org.jenkins-ci.plugins:structs:1.9@jar'
+    testCompile 'org.jenkins-ci.plugins:structs:1.13@jar'
     testCompile 'org.jenkins-ci.plugins:cloudbees-folder:5.12@jar'
 
     // plugins to install in test instance
