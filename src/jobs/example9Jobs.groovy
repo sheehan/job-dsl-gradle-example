@@ -5,7 +5,7 @@ folder(basePath) {
     description 'This example shows how to use the automatically generated DSL provided by other plugins.'
 }
 
-job("$basePath/grails-legacy-build") {
+job("$basePath/gradle-legacy-build") {
     scm {
         cvsscm { // <-- NOTE: provided by testPlugins dependency in build.gradle
             repositories {
@@ -19,7 +19,7 @@ job("$basePath/grails-legacy-build") {
                         cvsRepositoryItem {
                             modules {
                                 cvsModule {
-                                    remoteName 'sheehan/grails-example'
+                                    remoteName 'sheehan/gradle-example'
                                     localName '.'
                                     projectsetFileName null
                                 }
@@ -45,10 +45,7 @@ job("$basePath/grails-legacy-build") {
         scm('H/5 * * * *')
     }
     steps {
-        grails {
-            useWrapper true
-            targets(['test-app', 'war'])
-        }
+        gradle 'assemble'
     }
 }
 

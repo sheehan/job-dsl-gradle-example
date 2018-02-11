@@ -1,11 +1,11 @@
 String basePath = 'example8'
-String repo = 'sheehan/grails-example'
+String repo = 'sheehan/gradle-example'
 
 folder(basePath) {
     description 'This example shows how to use DSL extensions provided by other plugins.'
 }
 
-job("$basePath/grails-example-build") {
+job("$basePath/gradle-example-build") {
     scm {
         git {
             remote {
@@ -23,9 +23,6 @@ job("$basePath/grails-example-build") {
         }
     }
     steps {
-        grails {
-            useWrapper true
-            targets(['test-app', 'war'])
-        }
+        gradle 'assemble'
     }
 }

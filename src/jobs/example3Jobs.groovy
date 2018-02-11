@@ -15,7 +15,7 @@ job("$basePath/configure-block-example") {
     }
 
     steps {
-        grails 'test war'
+        gradle 'assemble'
     }
 
     configure { Node project ->

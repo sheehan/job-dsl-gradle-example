@@ -20,7 +20,7 @@ folder(basePath) {
             scm 'H/5 * * * *'
         }
         steps {
-            grails 'test war'
+            gradle 'assemble'
         }
         publishers {
             if (config.email) {

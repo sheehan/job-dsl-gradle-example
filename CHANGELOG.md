@@ -1,6 +1,9 @@
 ## Changes (excluding dependency updates)
 
-### 2017-02-05
+### 2018-02-11
+* Removed references to deprecated grails plugin.
+
+### 2018-02-05
 * Add workaround from [#90](https://github.com/sheehan/job-dsl-gradle-example/issues/90)
 
 ### 2017-10-29

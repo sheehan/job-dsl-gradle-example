@@ -1,7 +1,7 @@
 import groovy.json.JsonSlurper
 
 String basePath = 'example2'
-String repo = 'sheehan/grails-example'
+String repo = 'sheehan/gradle-example'
 
 folder(basePath) {
     description 'This example shows how to create a set of jobs for each github branch, each in its own folder.'
@@ -15,7 +15,7 @@ branches.each { branch ->
 
     folder "$basePath/$safeBranchName"
 
-    job("$basePath/$safeBranchName/grails-example-build") {
+    job("$basePath/$safeBranchName/gradle-example-build") {
         scm {
             github repo, branch.name
         }
@@ -23,11 +23,11 @@ branches.each { branch ->
             scm 'H/30 * * * *'
         }
         steps {
-            grails 'test-app war', true
+            gradle 'assemble'
         }
     }
 
-    job("$basePath/$safeBranchName/grails-example-deploy") {
+    job("$basePath/$safeBranchName/gradle-example-deploy") {
         parameters {
             stringParam 'host'
         }

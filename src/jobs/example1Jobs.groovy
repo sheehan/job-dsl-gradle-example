@@ -1,11 +1,11 @@
 String basePath = 'example1'
-String repo = 'sheehan/grails-example'
+String repo = 'sheehan/gradle-example'
 
 folder(basePath) {
     description 'This example shows basic folder/job creation.'
 }
 
-job("$basePath/grails-example-build") {
+job("$basePath/gradle-example-build") {
     scm {
         github repo
     }
@@ -13,14 +13,11 @@ job("$basePath/grails-example-build") {
         scm 'H/5 * * * *'
     }
     steps {
-        grails {
-            useWrapper true
-            targets(['test-app', 'war'])
-        }
+        gradle 'assemble'
     }
 }
 
-job("$basePath/grails-example-deploy") {
+job("$basePath/gradle-example-deploy") {
     parameters {
         stringParam 'host'
     }
