@@ -48,7 +48,7 @@ Or manually create a job with the same structure:
    * Use Gradle Wrapper: `true`
    * Tasks: `clean test`
 * Process Job DSLs
-   * DSL Scripts: `jobs/**/*Jobs.groovy`
+   * DSL Scripts: `src/jobs/**/*Jobs.groovy`
    * Additional classpath: `src/main/groovy`
 * Publish JUnit test result report
    * Test report XMLs: `build/test-results/**/*.xml`
