@@ -90,7 +90,3 @@ test {
     // set build directory for Jenkins test harness, JENKINS-26331
     systemProperty 'buildDirectory', project.buildDir.absolutePath
 }
-
-task wrapper(type: Wrapper) {
-    gradleVersion = '2.9'
-}
