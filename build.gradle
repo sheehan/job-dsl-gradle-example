@@ -44,15 +44,16 @@ dependencies {
     // Job DSL plugin including plugin dependencies
     testCompile "org.jenkins-ci.plugins:job-dsl:${jobDslVersion}"
     testCompile "org.jenkins-ci.plugins:job-dsl:${jobDslVersion}@jar"
-    testCompile 'org.jenkins-ci.plugins:structs:1.13@jar'
-    testCompile 'org.jenkins-ci.plugins:cloudbees-folder:5.12@jar'
+    testCompile 'org.jenkins-ci.plugins:structs:1.19@jar'
+    testCompile 'org.jenkins-ci.plugins:cloudbees-folder:5.14@jar'
     testCompile 'org.jenkins-ci.plugins:ghprb:1.40.0@jar'
     testCompile 'org.jenkins-ci.plugins:credentials:2.1.10@jar'
     testCompile 'com.coravy.hudson.plugins.github:github:1.29.0@jar'
+    testCompile 'org.jenkins-ci.plugins:token-macro:2.5@jar'
 
     // plugins to install in test instance
     testPlugins 'org.jenkins-ci.plugins:ghprb:1.40.0'
-    testPlugins 'org.jenkins-ci.plugins:cloudbees-folder:5.12'
+    testPlugins 'org.jenkins-ci.plugins:cloudbees-folder:5.14'
     testPlugins 'org.jenkins-ci.plugins:credentials:2.1.10'
 
     // plugins used for auto-generated DSL. See example 9.
