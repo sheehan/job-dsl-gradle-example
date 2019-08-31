@@ -45,23 +45,24 @@ dependencies {
     testCompile "org.jenkins-ci.plugins:job-dsl:${jobDslVersion}"
     testCompile "org.jenkins-ci.plugins:job-dsl:${jobDslVersion}@jar"
     testCompile 'org.jenkins-ci.plugins:structs:1.19@jar'
-    testCompile 'org.jenkins-ci.plugins:cloudbees-folder:5.14@jar'
-    testCompile 'org.jenkins-ci.plugins:ghprb:1.40.0@jar'
-    testCompile 'org.jenkins-ci.plugins:credentials:2.1.10@jar'
-    testCompile 'com.coravy.hudson.plugins.github:github:1.29.0@jar'
-    testCompile 'org.jenkins-ci.plugins:token-macro:2.5@jar'
 
-    // plugins to install in test instance
-    testPlugins 'org.jenkins-ci.plugins:ghprb:1.40.0'
+    // Plugins to install in test instance
     testPlugins 'org.jenkins-ci.plugins:cloudbees-folder:5.14'
     testPlugins 'org.jenkins-ci.plugins:credentials:2.1.10'
-
-    // plugins used for auto-generated DSL. See example 9.
     testPlugins 'org.jenkins-ci.plugins:cvs:2.13'
+    testPlugins 'org.jenkins-ci.plugins:ghprb:1.40.0'
+    testPlugins 'org.jenkins-ci.plugins:token-macro:2.5'
     testPlugins 'org.jenkins-ci.plugins.workflow:workflow-cps-global-lib:2.7'
 
-    // plugin dependencies
-    testPlugins 'org.jenkins-ci.plugins:token-macro:2.5'
+    // Run the following script in the Script Console of your Jenkins instance to generate
+    // the above testPlugins list. (adapted from https://git.io/fjpUs)
+    /*
+        Jenkins.instance.pluginManager.plugins
+            .findAll { !(it.shortName in ['job-dsl', 'structs']) }
+            .collect { "testPlugins '${it.manifest.mainAttributes.getValue("Group-Id")}:${it.shortName}:${it.version}'" }
+            .sort()
+            .each { println it }
+     */
 }
 
 task resolveTestPlugins(type: Copy) {
