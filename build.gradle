@@ -19,6 +19,12 @@ repositories {
 
 configurations {
     testPlugins {}
+
+    // see JENKINS-45512
+    testCompile {
+        exclude group: 'xalan'
+        exclude group: 'xerces'
+    }
 }
 
 // Exclude buggy Xalan dependency this way the JRE default TransformerFactory is used
@@ -30,11 +36,11 @@ dependencies {
     compile "org.jenkins-ci.plugins:job-dsl-core:${jobDslVersion}"
     compile 'org.kohsuke:github-api:1.93'
 
-    testCompile 'org.spockframework:spock-core:1.0-groovy-2.4'
+    testCompile 'org.spockframework:spock-core:1.3-groovy-2.4'
     testCompile 'cglib:cglib-nodep:2.2.2' // used by Spock
 
     // Jenkins test harness dependencies
-    testCompile('org.jenkins-ci.main:jenkins-test-harness:2.33') {
+    testCompile('org.jenkins-ci.main:jenkins-test-harness:2.49') {
         exclude group: 'org.netbeans.modules', module: 'org-netbeans-insane' // https://github.com/sheehan/job-dsl-gradle-example/issues/90
     }
     testCompile("org.jenkins-ci.main:jenkins-war:${jenkinsVersion}") {
@@ -44,7 +50,7 @@ dependencies {
     // Job DSL plugin including plugin dependencies
     testCompile "org.jenkins-ci.plugins:job-dsl:${jobDslVersion}"
     testCompile "org.jenkins-ci.plugins:job-dsl:${jobDslVersion}@jar"
-    testCompile 'org.jenkins-ci.plugins:structs:1.19@jar'
+    testCompile 'org.jenkins-ci.plugins:structs:1.20@jar'
 
     // Plugins to install in test instance
     testPlugins 'org.jenkins-ci.plugins:cloudbees-folder:5.14'
@@ -88,7 +94,4 @@ task resolveTestPlugins(type: Copy) {
 test {
     dependsOn tasks.resolveTestPlugins
     inputs.files sourceSets.jobs.groovy.srcDirs
-
-    // set build directory for Jenkins test harness, JENKINS-26331
-    systemProperty 'buildDirectory', project.buildDir.absolutePath
 }
